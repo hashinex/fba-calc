@@ -1,38 +1,59 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8" />
-  <title>Amazon FBA Calculator</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <div class="container">
-    <h2>Amazon FBA Calculator</h2>
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f9f9f9;
+  height: 100%;
+  overflow: hidden;
+}
 
-    <label>Cost Price ($)</label>
-    <input type="number" id="cost" />
+.header {
+  background-color: #202124;
+  color: white;
+  font-size: 18px;
+  padding: 15px;
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 1px solid #444;
+}
 
-    <label>Selling Price ($)</label>
-    <input type="number" id="selling" />
+.content {
+  padding: 16px;
+  height: calc(100% - 60px);
+  overflow-y: auto;
+}
 
-    <label>Amazon Fee (%)</label>
-    <input type="number" id="fee" value="15" />
+.section {
+  margin-bottom: 20px;
+}
 
-    <label>BSR</label>
-    <input type="text" id="bsr" />
+.section label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
 
-    <label>Break Even Price</label>
-    <input type="text" id="breakEven" readonly />
+.section input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
 
-    <label>Profit ($)</label>
-    <input type="text" id="profit" readonly />
+.section button {
+  background-color: #f6c05f;
+  color: black;
+  border: none;
+  padding: 10px 15px;
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
 
-    <label>ROI (%)</label>
-    <input type="text" id="roi" readonly />
-
-    <button onclick="calculate()">Calculate</button>
-  </div>
-
-  <script src="sidebar.js"></script>
-</body>
-</html>
+.section.result {
+  background: #fff7d4;
+  padding: 12px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+}
