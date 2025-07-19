@@ -1,34 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FBA Calculator</title>
-  <link rel="stylesheet" href="popup.css" />
+  <title>AMZCALC Popup</title>
+  <link rel="stylesheet" href="popup.css">
+  <style>
+    body {
+      width: 250px; /* Standard popup width */
+      padding: 15px;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    h1 {
+      color: #333;
+      font-size: 1.2em;
+    }
+    p {
+      color: #666;
+      font-size: 0.9em;
+    }
+    button {
+      background-color: #f0c14b;
+      border: 1px solid #a88734;
+      border-radius: 3px;
+      padding: 8px 15px;
+      cursor: pointer;
+      font-size: 0.9em;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #e4b238;
+    }
+  </style>
 </head>
 <body>
-  <div id="sidebar">
-    <h2>Amazon FBA Calculator</h2>
-    <label>Cost Price ($):</label>
-    <input type="number" id="cost" placeholder="e.g., 10">
-    
-    <label>Sell Price ($):</label>
-    <input type="number" id="price" placeholder="e.g., 25">
+  <h1>AMZCALC Extension</h1>
+  <p>To use the FBA Calculator, navigate to any Amazon product listing page.</p>
+  <p>The calculator will automatically appear in the side panel. Or click the button below to open it manually.</p>
+  <button id="openSidePanel">Open Side Panel</button>
 
-    <label>Amazon Fee ($):</label>
-    <input type="number" id="fee" placeholder="e.g., 5">
-
-    <label>Shipping Cost ($):</label>
-    <input type="number" id="ship" placeholder="e.g., 3">
-
-    <button onclick="calculate()">Calculate</button>
-
-    <div id="results">
-      <p><strong>Profit:</strong> $<span id="profit">0</span></p>
-      <p><strong>ROI:</strong> <span id="roi">0</span>%</p>
-      <p><strong>Break-even Price:</strong> $<span id="breakEven">0</span></p>
-    </div>
-  </div>
   <script src="popup.js"></script>
 </body>
 </html>

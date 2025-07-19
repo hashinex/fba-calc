@@ -1,19 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>FBA Sidebar Calculator</title>
+  <title>AMZCALC Sidebar</title>
   <link rel="stylesheet" href="sidebar.css">
+  <style>
+    /* Basic styling for the sidebar and resizer */
+    body {
+      margin: 0;
+      padding: 10px;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden; /* Prevent horizontal scrollbar during resize */
+      display: flex;
+      flex-direction: column;
+      height: 100vh; /* Make body take full height of sidebar */
+      box-sizing: border-box; /* Include padding in height */
+      background-color: #f7f7f7;
+      border-left: 1px solid #ddd; /* Visual separation from the page */
+    }
+
+    #calculator-content {
+      flex-grow: 1; /* Allow content to take available space */
+      overflow-y: auto; /* Enable scrolling for content if it overflows */
+      padding-bottom: 20px; /* Space at the bottom */
+    }
+
+    h1 {
+      color: #333;
+      font-size: 1.5em;
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    input[type="number"] {
+      width: calc(100% - 22px); /* Full width minus padding and border */
+      padding: 8px 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    }
+
+    button {
+      background-color: #f0c14b;
+      border: 1px solid #a88734;
+      border-radius: 3px;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 1em;
+      margin-top: 20px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    button:hover {
+      background-color: #e4b238;
+    }
+
+    #results {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #eee;
+      background-color: #fff;
+      border-radius: 5px;
+      min-height: 50px;
+    }
+    #results p {
+      margin: 5px 0;
+      color: #333;
+    }
+    #results strong {
+      color: #007bff;
+    }
+
+    /* Resizer styles (for width) - this is crucial for resizing */
+    .resizer {
+      width: 5px; /* Visual width of the grab handle */
+      height: 100%;
+      cursor: ew-resize; /* East-west resize cursor */
+      position: absolute;
+      left: 0; /* Positioned on the left edge of the sidebar */
+      top: 0;
+      background-color: rgba(0, 0, 0, 0.1); /* Subtle visual hint */
+      z-index: 1000; /* Ensure it's on top of other content */
+    }
+    .resizer:hover {
+      background-color: rgba(0, 0, 0, 0.3); /* Darker on hover */
+    }
+  </style>
 </head>
 <body>
-  <div id="amzSidebar">
-    <h2>FBA Profit Calculator</h2>
-    <label>Cost Price: <input type="number" id="cost" /></label>
-    <label>Sale Price: <input type="number" id="sale" /></label>
-    <label>Amazon Fee: <input type="number" id="fee" /></label>
-    <button onclick="calculate()">Calculate</button>
-    <div id="result"></div>
+  <div class="resizer"></div> <div id="calculator-content">
+    <h1>FBA Calculator</h1>
+    <p>Product Title: <strong id="productTitleDisplay">Loading...</strong></p>
+    <p>Product Price: <strong id="productPriceDisplay">Loading...</strong></p>
+    <p>Product Weight: <strong id="productWeightDisplay">Loading...</strong></p>
+
+    <label for="costOfGoods">Cost of Goods ($):</label>
+    <input type="number" id="costOfGoods" step="0.01" value="0.00">
+
+    <label for="shippingCost">Shipping Cost ($):</label>
+    <input type="number" id="shippingCost" step="0.01" value="0.00">
+
+    <button id="calculateButton">Calculate FBA Fees</button>
+
+    <div id="results">
+      <h3>Calculated Fees:</h3>
+      <p>Referral Fee: <span id="referralFee">$0.00</span></p>
+      <p>FBA Fulfillment Fee: <span id="fulfillmentFee">$0.00</span></p>
+      <p>Storage Fee: <span id="storageFee">$0.00</span></p>
+      <p>Total FBA Fees: <span id="totalFbaFees">$0.00</span></p>
+      <p>Net Profit: <span id="netProfit">$0.00</span></p>
+    </div>
   </div>
+
+  <script src="sidebar.js"></script>
 </body>
-<script src="sidebar.js"></script>
 </html>
