@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FBA Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      width: 300px;
+      padding: 15px;
+    }
+    input {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 5px;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      padding: 8px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .result {
+      margin-top: 15px;
+    }
+    .result p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <h2>FBA Profit Calculator</h2>
+
+  <input type="text" id="bsr" placeholder="BSR (optional)">
+  <input type="number" id="price" placeholder="Selling Price">
+  <input type="number" id="cost" placeholder="Cost Price">
+  <input type="number" id="fees" placeholder="Amazon FBA Fees">
+
+  <button onclick="calculate()">Calculate</button>
+
+  <div class="result">
+    <p>Profit: <span id="profit">$0.00</span></p>
+    <p>ROI: <span id="roi">0%</span></p>
+    <p>Break Even Price: <span id="breakeven">$0.00</span></p>
+  </div>
+
+  <script>
+    function calculate() {
+      const price = parseFloat(document.getElementById("price").value);
+      const cost = parseFloat(document.getElementById("cost").value);
+      const fees = parseFloat(document.getElementById("fees").value);
+
+      if (isNaN(price) || isNaN(cost) || isNaN(fees)) {
+        alert("Please enter valid numbers for price, cost, and fees.");
+        return;
+      }
+
+      const profit = price - cost - fees;
+      const roi = (profit / cost) * 100;
+      const breakEven = cost + fees;
+
+      document.getElementById("profit").textContent = `$${profit.toFixed(2)}`;
+      document.getElementById("roi").textContent = `${roi.toFixed(2)}%`;
+      document.getElementById("breakeven").textContent = `$${breakEven.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
