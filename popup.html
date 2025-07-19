@@ -4,72 +4,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>FBA Calculator</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      width: 300px;
-      padding: 15px;
-    }
-    input {
-      width: 100%;
-      margin-bottom: 10px;
-      padding: 5px;
-      box-sizing: border-box;
-    }
-    button {
-      width: 100%;
-      padding: 8px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
-    .result {
-      margin-top: 15px;
-    }
-    .result p {
-      margin: 5px 0;
-    }
-  </style>
+  <link rel="stylesheet" href="popup.css" />
 </head>
 <body>
-  <h2>FBA Profit Calculator</h2>
+  <div id="sidebar">
+    <h2>Amazon FBA Calculator</h2>
+    <label>Cost Price ($):</label>
+    <input type="number" id="cost" placeholder="e.g., 10">
+    
+    <label>Sell Price ($):</label>
+    <input type="number" id="price" placeholder="e.g., 25">
 
-  <input type="text" id="bsr" placeholder="BSR (optional)">
-  <input type="number" id="price" placeholder="Selling Price">
-  <input type="number" id="cost" placeholder="Cost Price">
-  <input type="number" id="fees" placeholder="Amazon FBA Fees">
+    <label>Amazon Fee ($):</label>
+    <input type="number" id="fee" placeholder="e.g., 5">
 
-  <button onclick="calculate()">Calculate</button>
+    <label>Shipping Cost ($):</label>
+    <input type="number" id="ship" placeholder="e.g., 3">
 
-  <div class="result">
-    <p>Profit: <span id="profit">$0.00</span></p>
-    <p>ROI: <span id="roi">0%</span></p>
-    <p>Break Even Price: <span id="breakeven">$0.00</span></p>
+    <button onclick="calculate()">Calculate</button>
+
+    <div id="results">
+      <p><strong>Profit:</strong> $<span id="profit">0</span></p>
+      <p><strong>ROI:</strong> <span id="roi">0</span>%</p>
+      <p><strong>Break-even Price:</strong> $<span id="breakEven">0</span></p>
+    </div>
   </div>
-
-  <script>
-    function calculate() {
-      const price = parseFloat(document.getElementById("price").value);
-      const cost = parseFloat(document.getElementById("cost").value);
-      const fees = parseFloat(document.getElementById("fees").value);
-
-      if (isNaN(price) || isNaN(cost) || isNaN(fees)) {
-        alert("Please enter valid numbers for price, cost, and fees.");
-        return;
-      }
-
-      const profit = price - cost - fees;
-      const roi = (profit / cost) * 100;
-      const breakEven = cost + fees;
-
-      document.getElementById("profit").textContent = `$${profit.toFixed(2)}`;
-      document.getElementById("roi").textContent = `${roi.toFixed(2)}%`;
-      document.getElementById("breakeven").textContent = `$${breakEven.toFixed(2)}`;
-    }
-  </script>
+  <script src="popup.js"></script>
 </body>
 </html>

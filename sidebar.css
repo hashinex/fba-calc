@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Amazon FBA Calculator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>Amazon FBA Calculator</h2>
+
+    <label>Cost Price ($)</label>
+    <input type="number" id="cost" />
+
+    <label>Selling Price ($)</label>
+    <input type="number" id="selling" />
+
+    <label>Amazon Fee (%)</label>
+    <input type="number" id="fee" value="15" />
+
+    <label>BSR</label>
+    <input type="text" id="bsr" />
+
+    <label>Break Even Price</label>
+    <input type="text" id="breakEven" readonly />
+
+    <label>Profit ($)</label>
+    <input type="text" id="profit" readonly />
+
+    <label>ROI (%)</label>
+    <input type="text" id="roi" readonly />
+
+    <button onclick="calculate()">Calculate</button>
+  </div>
+
+  <script src="sidebar.js"></script>
+</body>
+</html>

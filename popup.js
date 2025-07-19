@@ -1,38 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FBA Calculator</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      width: 300px;
-      padding: 15px;
-    }
-    input {
-      width: 100%;
-      margin-bottom: 10px;
-      padding: 5px;
-    }
-    .result {
-      margin-top: 10px;
-    }
-  </style>
-</head>
-<body>
-  <h2>FBA Profit Calculator</h2>
-  <input type="text" id="bsr" placeholder="BSR (optional)">
-  <input type="number" id="price" placeholder="Selling Price">
-  <input type="number" id="cost" placeholder="Cost Price">
-  <button id="calculate">Calculate</button>
+function calculate() {
+  const cost = parseFloat(document.getElementById('cost').value) || 0;
+  const price = parseFloat(document.getElementById('price').value) || 0;
+  const fee = parseFloat(document.getElementById('fee').value) || 0;
+  const ship = parseFloat(document.getElementById('ship').value) || 0;
 
-  <div class="result">
-    <p>Profit: <span id="profit">$0.00</span></p>
-    <p>ROI: <span id="roi">0%</span></p>
-    <p>Break Even: <span id="breakeven">$0.00</span></p>
-  </div>
+  const profit = price - cost - fee - ship;
+  const roi = ((profit / cost) * 100).toFixed(2);
+  const breakEven = (cost + fee + ship).toFixed(2);
 
-  <script src="popup.js"></script>
-</body>
-</html>
+  document.getElementById('profit').innerText = profit.toFixed(2);
+  document.getElementById('roi').innerText = isNaN(roi) ? 0 : roi;
+  document.getElementById('breakEven').innerText = breakEven;
+}
